@@ -3,6 +3,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect('mongodb://localhost/users_test');
 mongoose.connection
