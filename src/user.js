@@ -8,10 +8,16 @@ const UserSchema = new Schema({
       validator: (name) => name.length > 2,
       message: 'Name must be longer than 2 characters'
     }, 
-    required: [true, 'UserSchema expected name prop.']
+    required: [true, 'Name is required.']
   },
   gender: String,
-  postCount: Number
+  postCount: {
+    type: Number,
+    validate: {
+      validator: (postCount) => postCount >= 0,
+      message: 'Negative number is not allowed.'
+    }
+  }
 });
 
 const User = mongoose.model('user', UserSchema); 

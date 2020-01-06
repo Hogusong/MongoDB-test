@@ -75,8 +75,8 @@ describe('Reading users out of the database', () => {
           assert(joe.postCount === 1);
         });
       User.findOne({ name: 'Narae', gender: 'Unknown' })
-        .then(joe => {
-          assert(joe.postCount === 10);
+        .then(narae => {
+          assert(narae.postCount === 10);
         });
       done();
     })
