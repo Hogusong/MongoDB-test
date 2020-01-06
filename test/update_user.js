@@ -61,17 +61,23 @@ describe('Reading users out of the database', () => {
   it('A user can have their postCount incremented by 1', (done) => {
     User.find().then(users => {
       users.forEach(user => {
-        const id = user._id;
-        User.updateOne({ _id: id }, { $inc: { postCount: 1 }})
-          .then(() => User.findOne({ _id: id }))
-          .then(newuser => {
-            console.log('new user:', newuser);
-          });
+        if (user.postCount < 5) {     // conditional update
+          const id = user._id;
+          User.updateOne({ _id: id }, { $inc: { postCount: 1 }})
+            .then(() => User.findOne({ _id: id }))
+            .then(newuser => {
+              console.log('new user:', newuser);
+            });
+        }
       })
       User.findOne({ name: 'Joseph' })
         .then(joe => {
           assert(joe.postCount === 1);
-        })
+        });
+      User.findOne({ name: 'Narae', gender: 'Unknown' })
+        .then(joe => {
+          assert(joe.postCount === 10);
+        });
       done();
     })
   })
