@@ -26,15 +26,14 @@ describe('Reading users out of the database', () => {
   }
 
   // something wrong with instance type using set n save.
-  xit('instance type using set n save', (done) => {
+  it('instance type using set n save', (done) => {
     clara.set('name', 'Clara');
-    clara.set('gender', 'Girl')
     clara.save()
-      .then(() => User.find({ name: 'Clara'}))
+      .then(() => User.find({ name: 'Clara' }))
       .then((users) => {
         console.log(users)
         assert(users.length === 1);
-        assert(users[0].gender === 'Clara');
+        assert(users[0].name === 'Clara');
         done();
       });
   });
