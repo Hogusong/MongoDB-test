@@ -10,7 +10,8 @@ const UserSchema = new Schema({
     }, 
     required: [true, 'UserSchema expected name prop.']
   },
-  gender: String
+  gender: String,
+  postCount: Number
 });
 
 const User = mongoose.model('user', UserSchema); 
