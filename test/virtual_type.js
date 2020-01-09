@@ -11,7 +11,7 @@ describe('Virtual types', () => {
       .then(() => User.findOne({ name: 'Young' }))
       .then((user) => {
         // countPOsts is a virtual field of user.
-        assert(song.countPosts === 1);
+        assert(user.countPosts === 1);
         done();
       })
   })
