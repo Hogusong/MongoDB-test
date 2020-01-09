@@ -26,12 +26,11 @@ describe('Reading users out of the database', () => {
   }
 
   // something wrong with instance type using set n save.
-  xit('instance type using set n save', (done) => {
-    clara.set('name', 'Clara');
+  it('instance type using set n save', (done) => {
+    clara.set({ name: 'Clara' });
     clara.save()
       .then(() => User.find({ name: 'Clara' }))
       .then((users) => {
-        console.log(users)
         assert(users.length === 1);
         assert(users[0].name === 'Clara');
         done();
@@ -66,7 +65,6 @@ describe('Reading users out of the database', () => {
           User.updateOne({ _id: id }, { $inc: { postCount: 1 }})
             .then(() => User.findOne({ _id: id }))
             .then(newuser => {
-              console.log('new user:', newuser);
             });
         }
       })

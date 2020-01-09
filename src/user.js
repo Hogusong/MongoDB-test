@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PostSchema = require('./post');
-
 const UserSchema = new Schema({
   name: {
     type: String,
@@ -20,7 +18,10 @@ const UserSchema = new Schema({
       message: 'Negative number is not allowed.'
     }
   },
-  posts: [PostSchema]
+  posts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'post'
+  }]
 });
 
 const User = mongoose.model('user', UserSchema); 

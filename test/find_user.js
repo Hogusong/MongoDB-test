@@ -39,7 +39,6 @@ describe('Reading users out of the database', () => {
       .sort({ name: -1 })
       .skip(1).limit(3)
       .then((users) => {
-        console.log(users);
         assert(users.length === 3);
         done();
       })

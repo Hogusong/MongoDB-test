@@ -18,8 +18,9 @@ before(done => {
 
 beforeEach((done) => {
   // 'done()' is a callback function. It notifies all the test parts when this process is done.
-  const { users } = mongoose.connection.collections;
-  if (users) {
-    users.drop(() => done());
+  const { users, posts } = mongoose.connection.collections;
+  if (users) users.drop();
+  if (posts) {
+    posts.drop(() => done())
   } else done();
 });

@@ -13,6 +13,4 @@ const PostSchema = new Schema({
   createdAt: Date
 });
 
-// const Post = mongoose.model('post', PostSchema);
-
-module.exports = PostSchema;
+module.exports = mongoose.model('post', PostSchema);
