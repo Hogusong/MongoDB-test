@@ -33,6 +33,16 @@ UserSchema.virtual('countPosts').get(function() {
   return this.posts.length
 });
 
+// middleware to remove user's blogPosts before remove a user.
+UserSchema.pre('remove', function(next) {
+  const BlogPost = mongoose.model('blogPost');
+  // this.blogPosts.forEach((id) => {
+  //   BlogPost.remove({ _id: id });
+  // });
+  BlogPost.remove({ _id: { $in: this.blogPosts } })
+    .then(() => next());
+});
+
 const User = mongoose.model('user', UserSchema); 
 
 module.exports = User;
