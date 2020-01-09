@@ -21,6 +21,10 @@ const UserSchema = new Schema({
   posts: [{
     type: Schema.Types.ObjectId,
     ref: 'post'
+  }],
+  blogPosts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'blogPost'
   }]
 });
 

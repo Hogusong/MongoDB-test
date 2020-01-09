@@ -63,9 +63,6 @@ describe('Reading users out of the database', () => {
         if (user.postCount < 5) {     // conditional update
           const id = user._id;
           User.updateOne({ _id: id }, { $inc: { postCount: 1 }})
-            .then(() => User.findOne({ _id: id }))
-            .then(newuser => {
-            });
         }
       })
       User.findOne({ name: 'Joseph' })
