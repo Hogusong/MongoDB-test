@@ -36,10 +36,15 @@ describe('Reading users out of the database', () => {
 
   it('can skip and limit the result set', (done) => {
     User.find({})
-      .sort({ name: -1 })
-      .skip(1).limit(3)
+      .sort({ name: 1 })
+      .skip(2).limit(3)
       .then((users) => {
+        console.log('skiped and limited users:', users);
         assert(users.length === 3);
+        done();
+      })
+      .catch(() => {
+        console.log('failed the test to skip and limit handling.');
         done();
       })
   });
