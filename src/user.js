@@ -24,6 +24,11 @@ const UserSchema = new Schema({
   }]
 });
 
+// define virtual field on Schema
+UserSchema.virtual('countPosts').get(function() {
+  return this.posts.length
+});
+
 const User = mongoose.model('user', UserSchema); 
 
 module.exports = User;
